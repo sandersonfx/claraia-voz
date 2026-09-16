@@ -5,7 +5,7 @@ import claraiaLogo from "@/assets/claraia-logo.png";
 import salonImage from "@/assets/claraia-salon.jpg";
 import stylistImage from "@/assets/claraia-stylist.jpg";
 
-const WHATSAPP_URL = "https://wa.me/?text=Ol%C3%A1%2C%20quero%20conhecer%20a%20CLARAIA%20para%20o%20meu%20sal%C3%A3o.";
+const WHATSAPP_URL = "https://wa.me/5511912557772?text=Ol%C3%A1%2C%20quero%20conhecer%20a%20CLARAIA%20para%20o%20meu%20sal%C3%A3o.";
 
 export const Route = createFileRoute("/")({
   head: () => ({ meta: [
