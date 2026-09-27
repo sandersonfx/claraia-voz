@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ArrowDown, ArrowRight, CalendarCheck, Check, Clock3, MessageCircle, Sparkles, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { CaseStudyKihon } from "@/components/CaseStudyKihon";
 import claraiaLogo from "@/assets/claraia-logo.png";
 import salonImage from "@/assets/claraia-salon.jpg";
 import stylistImage from "@/assets/claraia-stylist.jpg";
@@ -132,6 +133,8 @@ function Home() {
           <p className="mx-auto mt-8 max-w-2xl text-sm leading-6 text-muted-foreground">Pensada para se encaixar na rotina de salões que já usam ferramentas de gestão, inclusive AVEC, sem exigir que sua equipe mude o jeito de trabalhar.</p>
         </div>
       </section>
+
+      <CaseStudyKihon />
 
       <section className="bg-primary px-5 py-20 text-primary-foreground sm:px-8 lg:px-14 lg:py-28">
         <div className="mx-auto flex max-w-[1200px] flex-col items-start justify-between gap-9 lg:flex-row lg:items-end">
