@@ -4,11 +4,15 @@ import {
   ArrowRight,
   CalendarCheck,
   Check,
-  Clock3,
+  Database,
+  FileSpreadsheet,
+  ListChecks,
   MessageCircle,
   Phone,
   PhoneIncoming,
   PhoneOutgoing,
+  Plug,
+  RefreshCw,
   ShieldCheck,
   Sparkles,
   Users,
@@ -21,22 +25,22 @@ import stylistImage from "@/assets/claraia-stylist.jpg";
 
 // Número único de contato da CLARAIA. Trocar aqui muda todos os CTAs da página.
 const WHATSAPP_URL =
-  "https://wa.me/5511912557772?text=Ol%C3%A1%2C%20quero%20a%20CLARAIA%20ligando%20para%20as%20minhas%20clientes.";
+  "https://wa.me/5511912557772?text=Ol%C3%A1%2C%20quero%20a%20CLARAIA%20atendendo%20e%20ligando%20no%20meu%20neg%C3%B3cio.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "CLARAIA Voz | Sua recepcionista de IA agora liga" },
+      { title: "CLARAIA Voz | Agente de IA que atende e faz ligações" },
       {
         name: "description",
         content:
-          "A CLARAIA pega as clientes que pararam de responder no WhatsApp e liga no telefone: fala como gente, sabe o histórico e marca de novo.",
+          "Um agente de IA no telefone do seu negócio: atende as ligações que chegam e liga para os contatos da sua lista ou do seu CRM.",
       },
-      { property: "og:title", content: "CLARAIA Voz | Ela já responde no WhatsApp. Agora ela liga." },
+      { property: "og:title", content: "CLARAIA Voz | Atende quem liga. E liga para quem sumiu." },
       {
         property: "og:description",
         content:
-          "Reativação por telefone para salões: a Clara liga para quem não respondeu, com o histórico na mão, e marca de novo.",
+          "Agente de IA por voz: recebe ligações e disca para a sua lista ou o seu CRM. Fala como gente, sabe o histórico e resolve.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -45,7 +49,7 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
-function WhatsAppButton({ outline = false, label = "Quero a Clara ligando" }: { outline?: boolean; label?: string }) {
+function WhatsAppButton({ outline = false, label = "Quero no meu negócio" }: { outline?: boolean; label?: string }) {
   return (
     <Button asChild variant={outline ? "editorialOutline" : "editorial"} size="editorial">
       <a href={WHATSAPP_URL} target="_blank" rel="noreferrer">
@@ -68,50 +72,98 @@ function Brand() {
 const pains = [
   {
     number: "01",
-    title: "Mensagem se ignora. Ligação, não.",
-    text: "Quem não abre o WhatsApp não sabe que você tentou. A ligação é o único canal em que a cliente precisa dizer não na hora.",
+    title: "Ligação não atendida não volta.",
+    text: "Quem liga e não é atendido não deixa recado: chama o próximo da lista. A ligação perdida é a venda que foi para o concorrente.",
   },
   {
     number: "02",
-    title: "Sua melhor cliente não sumiu por preço.",
-    text: "Ela só esqueceu. Sem alguém que chame pelo nome, ela lembra do salão quando passa na frente — ou quando a amiga indica outro.",
+    title: "Mensagem se ignora. Ligação, não.",
+    text: "Quem não abre a mensagem não sabe que você tentou. A ligação é o único canal em que o cliente precisa dizer não na hora.",
   },
   {
     number: "03",
-    title: "O telefone toca e ninguém está livre.",
-    text: "Enquanto a equipe atende, a chamada cai. Cada ligação perdida é um horário que ficou vago na agenda.",
+    title: "Sua lista está parada.",
+    text: "O CRM cheio de contato que ninguém toca há meses é a receita mais barata que existe — e a única que ninguém tem tempo de buscar.",
   },
 ];
 
 const abilities = [
   {
-    icon: PhoneOutgoing,
-    title: "Escolhe quem ligar",
-    text: "Quem parou de responder, quem não volta há tempo e quem tem horário vago na agenda.",
+    icon: PhoneIncoming,
+    title: "Atende na hora",
+    text: "Pega a ligação quando ninguém está livre e também fora do expediente. Ninguém fica esperando na linha.",
   },
   {
-    icon: MessageCircle,
-    title: "Sabe com quem fala",
-    text: "Nome, última visita, serviços preferidos e o que a cliente costuma fazer no salão.",
+    icon: PhoneOutgoing,
+    title: "Liga com contexto",
+    text: "Disca sabendo com quem fala: nome, histórico, última compra e o motivo daquela ligação.",
+  },
+  {
+    icon: Database,
+    title: "Usa o que você tem",
+    text: "Trabalha com a sua lista ou o seu CRM. Não exige sistema novo nem migração.",
   },
   {
     icon: CalendarCheck,
-    title: "Resolve na hora",
-    text: "Marca, confirma, remarca. Se a cliente pedir, passa para uma pessoa na mesma ligação.",
-  },
-  {
-    icon: Clock3,
-    title: "Fala na hora certa",
-    text: "Só em horário comercial, com teto por dia e uma tentativa por cliente por período.",
+    title: "Resolve ou transfere",
+    text: "Agenda, informa, registra o desfecho. Se o cliente pedir uma pessoa, passa na mesma ligação.",
   },
 ];
 
-const limits = [
+const integrations = [
+  {
+    icon: FileSpreadsheet,
+    title: "Sua planilha",
+    text: "Suba um arquivo com nome, telefone e o que mais tiver. A Clara usa o que estiver lá — sem cadastro manual.",
+  },
+  {
+    icon: Plug,
+    title: "Seu CRM",
+    text: "Conecte o CRM e ela lê a etapa de cada contato, o histórico de conversa e o que já foi comprado.",
+  },
+  {
+    icon: ListChecks,
+    title: "Seus filtros",
+    text: "Você decide quem entra na fila: quem não volta há X dias, quem nunca respondeu, aniversário, orçamento parado.",
+  },
+  {
+    icon: RefreshCw,
+    title: "Seu retorno",
+    text: "O desfecho de cada ligação volta para a lista ou o CRM: atendeu, agendou, recusou, pediu para não ligar mais.",
+  },
+];
+
+const limitsLiga = [
   "Diz que é atendimento automático na primeira frase.",
-  "Não liga fora do horário comercial, nem no domingo.",
-  "Não insiste: uma tentativa por cliente por período.",
-  "Não liga para quem pediu para não receber — nunca mais.",
-  "Passa para uma pessoa na hora, se a cliente pedir.",
+  "Só liga em horário comercial, nunca no domingo.",
+  "Uma tentativa por contato por período — não insiste.",
+  "Respeita o teto diário que você definir.",
+  "Não liga para quem pediu para não receber. Nunca mais.",
+];
+
+const limitsAtende = [
+  "Atende a qualquer hora, inclusive fora do expediente.",
+  "Diz que é atendimento automático se o cliente perguntar.",
+  "Se não souber resolver, transfere para uma pessoa.",
+  "Registra o motivo da ligação no histórico do cliente.",
+];
+
+const steps = [
+  {
+    number: "01",
+    title: "Conecte o telefone",
+    text: "O número do seu negócio passa a atender as ligações que chegam, com a Clara na linha.",
+  },
+  {
+    number: "02",
+    title: "Traga seus contatos",
+    text: "Importe uma planilha ou conecte o seu CRM. Ela passa a ligar para quem você quiser alcançar.",
+  },
+  {
+    number: "03",
+    title: "Defina as regras",
+    text: "Quem entra na fila, em que horário, com qual oferta e quantas tentativas. O resto ela conduz.",
+  },
 ];
 
 function Home() {
@@ -122,7 +174,7 @@ function Home() {
           <Brand />
           <nav className="hidden items-center gap-8 text-xs uppercase tracking-[0.12em] md:flex" aria-label="Navegação principal">
             <a href="#como-funciona" className="transition-opacity hover:opacity-60">Como funciona</a>
-            <a href="#resultados" className="transition-opacity hover:opacity-60">Por que ligar</a>
+            <a href="#integracao" className="transition-opacity hover:opacity-60">Lista e CRM</a>
           </nav>
           <WhatsAppButton outline label="Falar com a Clara" />
         </div>
@@ -132,7 +184,7 @@ function Home() {
         <div className="absolute inset-y-0 right-0 w-full overflow-hidden md:w-[52%]">
           <img
             src={salonImage}
-            alt="Interior sofisticado de um salão de beleza"
+            alt="Interior de um negócio de beleza"
             width={1280}
             height={1600}
             className="h-full w-full object-cover object-center"
@@ -144,15 +196,15 @@ function Home() {
         <div className="relative mx-auto flex min-h-[760px] max-w-[1440px] items-center px-5 pb-16 pt-32 sm:px-8 lg:min-h-[820px] lg:px-14">
           <div className="reveal max-w-4xl">
             <p className="mb-7 flex items-center gap-3 text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-gold">
-              <span className="h-px w-9 bg-gold" /> Recepcionista de IA para salões — agora no telefone
+              <span className="h-px w-9 bg-gold" /> Agente de IA por voz — atende e liga
             </p>
             <h1 className="font-display max-w-4xl text-6xl leading-[0.9] text-primary sm:text-7xl lg:text-[7.75rem]">
-              Ela já responde.<br />Agora ela <em className="font-normal text-gold">liga.</em>
+              Atende quem liga.<br />E liga para quem <em className="font-normal text-gold">sumiu.</em>
             </h1>
             <div className="mt-9 flex max-w-2xl flex-col items-start gap-7 border-l border-gold/60 pl-5 sm:flex-row sm:items-end sm:justify-between sm:pl-7">
               <p className="max-w-md text-base leading-relaxed text-foreground/75 sm:text-lg">
-                A Clara pega as clientes que pararam de responder e chama no telefone. Fala como gente, já sabe o
-                nome, a última visita e o que ela comprou — e marca de novo.
+                Um agente de IA no telefone do seu negócio. Atende as ligações que chegam e disca para os contatos da
+                sua lista ou do seu CRM — falando como gente e sabendo o histórico de cada um.
               </p>
               <WhatsAppButton />
             </div>
@@ -167,20 +219,20 @@ function Home() {
         </div>
       </section>
 
-      <section id="ligacao" className="px-5 py-24 sm:px-8 lg:px-14 lg:py-32">
+      <section id="ligacao" className="bg-secondary px-5 py-24 text-foreground sm:px-8 lg:px-14 lg:py-32">
         <div className="mx-auto max-w-[1320px]">
           <div className="grid gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:gap-24">
-            <p className="pt-4 text-xs font-semibold uppercase tracking-[0.18em] text-primary">Ouça antes de decidir</p>
+            <p className="pt-4 text-xs font-semibold uppercase tracking-[0.18em] text-primary">Duas direções, um só telefone</p>
             <h2 className="font-display text-5xl leading-[1.02] sm:text-6xl lg:text-7xl">
-              É uma ligação.<br /><em className="text-primary">Não é um robô lendo script.</em>
+              Ela atende a ligação.<br /><em className="text-primary">E faz a ligação.</em>
             </h2>
           </div>
 
-          <div className="mt-16 grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-center lg:gap-20">
+          <div className="mt-16 grid gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:items-start lg:gap-20">
             <div className="relative mx-auto w-full max-w-lg">
               <img
                 src={stylistImage}
-                alt="Profissional finalizando o penteado de uma cliente"
+                alt="Profissional atendendo um cliente"
                 loading="lazy"
                 width={1600}
                 height={1072}
@@ -189,13 +241,41 @@ function Home() {
               <div className="absolute -bottom-8 right-0 w-[88%] bg-background p-5 text-foreground shadow-2xl sm:-right-8 sm:w-[78%] sm:p-7">
                 <div className="flex items-center justify-between border-b border-border pb-4">
                   <div>
-                    <p className="font-display text-2xl">Ligação · Ana</p>
+                    <p className="font-display text-2xl">Ligação recebida</p>
                     <p className="text-[0.65rem] uppercase tracking-[0.16em] text-muted-foreground">
                       <PhoneIncoming className="mr-1 inline size-3 align-[-1px]" />
-                      0:32 · atendida
+                      0:32 · fora do expediente
                     </p>
                   </div>
                   <span className="size-2 rounded-full bg-green-600" />
+                </div>
+                <div className="mt-5 space-y-3 text-sm leading-relaxed">
+                  <div className="ml-12 bg-primary p-3 text-primary-foreground">
+                    Boa noite, vocês fazem escova amanhã?
+                  </div>
+                  <div className="mr-8 bg-muted p-3">
+                    Boa noite! Aqui é a Clara, atendimento automático do salão. Fazemos sim — tenho 15h e 17h30
+                    livres. Prefere qual?
+                  </div>
+                  <div className="ml-12 bg-primary p-3 text-primary-foreground">15h</div>
+                  <div className="mr-8 bg-muted p-3">
+                    Reservei amanhã às 15h e te lembro um dia antes. Pode ser no seu nome mesmo?
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="pt-10 lg:pt-0">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">Quando a Clara liga</p>
+              <div className="mt-6 border border-border bg-background p-6 shadow-sm sm:p-8">
+                <div className="flex items-center justify-between border-b border-border pb-4">
+                  <div>
+                    <p className="font-display text-2xl">Ligação feita</p>
+                    <p className="text-[0.65rem] uppercase tracking-[0.16em] text-muted-foreground">
+                      <PhoneOutgoing className="mr-1 inline size-3 align-[-1px]" />
+                      0:28 · contato da lista, sem retorno há 90 dias
+                    </p>
+                  </div>
                 </div>
                 <div className="mt-5 space-y-3 text-sm leading-relaxed">
                   <div className="mr-8 bg-muted p-3">
@@ -206,41 +286,26 @@ function Home() {
                   <div className="mr-8 bg-muted p-3">
                     A escova está R$ 90. Reservei quinta às 15h com a Camila, e te lembro um dia antes.
                   </div>
-                  <div className="ml-12 bg-primary p-3 text-primary-foreground">Perfeito ✨</div>
                 </div>
-                <div className="mt-5 flex items-center gap-3 border-t border-border pt-4 text-[0.65rem] uppercase tracking-[0.14em] text-muted-foreground">
-                  <span className="inline-flex items-center gap-2">
-                    <span className="h-4 w-px bg-gold" />
-                    <span className="h-3 w-px bg-gold" />
-                    <span className="h-6 w-px bg-gold" />
-                    <span className="h-3 w-px bg-gold" />
-                    <span className="h-5 w-px bg-gold" />
-                  </span>
-                  exemplo de ligação
+                <div className="mt-5 border-t border-border pt-4 text-[0.65rem] uppercase tracking-[0.14em] text-muted-foreground">
+                  desfecho gravado na lista · agendou
                 </div>
               </div>
-            </div>
 
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">O que muda numa ligação</p>
-              <div className="mt-8 space-y-7">
+              <div className="mt-10 space-y-6">
                 {[
                   {
-                    title: "Ela usa o que já sabe.",
-                    text: "Não pergunta o nome, não pergunta o que a cliente costuma fazer: chega sabendo, porque o salão já registrou isso antes.",
+                    title: "Não é um robô lendo script.",
+                    text: "Ela conversa, espera a resposta e oferece outra opção quando o cliente hesita. Se topar, já marca. Se pedir uma pessoa, transfere na hora.",
                   },
                   {
-                    title: "Ela espera a resposta.",
-                    text: "Conversa, não despeja informação. Se a cliente hesitar, ela oferece outro horário ou outro serviço.",
-                  },
-                  {
-                    title: "Ela fecha ou passa adiante.",
-                    text: "Se a cliente topar, o horário já entra na agenda. Se ela pedir uma pessoa, a ligação é transferida na hora.",
+                    title: "As duas direções usam o mesmo histórico.",
+                    text: "O que ela aprendeu atendendo serve para ligar — e o que descobriu ligando fica registrado para a próxima conversa.",
                   },
                 ].map((item) => (
                   <div key={item.title} className="editorial-rule pt-6">
                     <h3 className="text-xl font-medium leading-snug">{item.title}</h3>
-                    <p className="mt-3 text-sm leading-7 text-muted-foreground">{item.text}</p>
+                    <p className="mt-3 text-sm leading-7 text-ink-soft">{item.text}</p>
                   </div>
                 ))}
               </div>
@@ -249,12 +314,12 @@ function Home() {
         </div>
       </section>
 
-      <section id="problema" className="bg-ivory-deep px-5 py-24 text-foreground sm:px-8 lg:px-14 lg:py-32">
+      <section id="problema" className="px-5 py-24 sm:px-8 lg:px-14 lg:py-32">
         <div className="mx-auto max-w-[1320px]">
           <div className="grid gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:gap-24">
             <p className="pt-4 text-xs font-semibold uppercase tracking-[0.18em] text-primary">O custo do silêncio</p>
             <h2 className="font-display text-5xl leading-[1.02] sm:text-6xl lg:text-7xl">
-              A mensagem foi enviada.<br /><em className="text-primary">E ninguém respondeu.</em>
+              O telefone tocou.<br /><em className="text-primary">Ninguém atendeu.</em>
             </h2>
           </div>
           <div className="mt-16 grid border-t border-border md:grid-cols-3">
@@ -265,7 +330,7 @@ function Home() {
               >
                 <span className="font-display text-3xl text-gold">{pain.number}</span>
                 <h3 className="mt-8 text-xl font-medium leading-snug">{pain.title}</h3>
-                <p className="mt-4 text-sm leading-7 text-ink-soft">{pain.text}</p>
+                <p className="mt-4 text-sm leading-7 text-muted-foreground">{pain.text}</p>
               </article>
             ))}
           </div>
@@ -275,13 +340,13 @@ function Home() {
       <section id="como-funciona" className="bg-wine px-5 py-24 text-primary-foreground sm:px-8 lg:px-14 lg:py-32">
         <div className="mx-auto max-w-[1320px]">
           <div className="max-w-3xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold">Ela liga com contexto, não com script</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold">Como ela trabalha</p>
             <h2 className="mt-6 font-display text-5xl leading-[1.02] sm:text-6xl">
-              Ela sabe com quem fala.<br /><em className="text-gold">E o que oferecer.</em>
+              Atende o telefone.<br /><em className="text-gold">E trabalha a sua base.</em>
             </h2>
             <p className="mt-7 max-w-xl leading-7 text-primary-foreground/70">
-              A mesma base que já atende no WhatsApp decide quem merece uma ligação hoje: quem sumiu, quem nunca
-              voltou, quem tem horário vago. A Clara não liga para listas — liga para pessoas que já conhecem o salão.
+              A mesma voz resolve as duas pontas: quem está ligando agora e quem você precisa chamar de volta. Sem
+              contratar mais gente e sem deixar cliente esperando na linha.
             </p>
           </div>
           <div className="mt-14 grid gap-7 sm:grid-cols-2 lg:grid-cols-4">
@@ -296,22 +361,46 @@ function Home() {
         </div>
       </section>
 
-      <section id="resultados" className="px-5 py-24 sm:px-8 lg:px-14 lg:py-32">
+      <section id="integracao" className="px-5 py-24 sm:px-8 lg:px-14 lg:py-32">
+        <div className="mx-auto max-w-[1320px]">
+          <div className="grid gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:gap-24">
+            <p className="pt-4 text-xs font-semibold uppercase tracking-[0.18em] text-primary">Sua lista ou seu CRM</p>
+            <h2 className="font-display text-5xl leading-[1.02] sm:text-6xl lg:text-7xl">
+              Ela não pede um sistema novo.<br /><em className="text-primary">Usa o que você já tem.</em>
+            </h2>
+          </div>
+          <div className="mt-16 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+            {integrations.map(({ icon: Icon, title, text }) => (
+              <div key={title} className="border-t border-border pt-6">
+                <Icon className="size-5 text-primary" />
+                <h3 className="mt-5 text-lg font-medium leading-snug">{title}</h3>
+                <p className="mt-3 text-sm leading-7 text-muted-foreground">{text}</p>
+              </div>
+            ))}
+          </div>
+          <p className="mt-14 max-w-3xl text-sm leading-7 text-muted-foreground">
+            Se a base estiver espalhada, começamos pela planilha — é o caminho mais rápido entre ter os contatos e
+            ouvir a primeira ligação.
+          </p>
+        </div>
+      </section>
+
+      <section id="resultados" className="bg-secondary px-5 py-24 sm:px-8 lg:px-14 lg:py-32">
         <div className="mx-auto max-w-[1200px] text-center">
           <Sparkles className="mx-auto size-6 text-gold" />
           <p className="mt-5 text-xs font-semibold uppercase tracking-[0.18em] text-primary">Mais agenda. Menos silêncio.</p>
           <h2 className="mx-auto mt-6 max-w-4xl font-display text-5xl leading-none sm:text-6xl lg:text-7xl">
-            O WhatsApp alcança quem abre.<br /><em className="text-primary">A ligação alcança o resto.</em>
+            Mensagem alcança quem abre.<br /><em className="text-primary">Ligação alcança o resto.</em>
           </h2>
           <div className="mt-16 grid overflow-hidden border border-border text-left lg:grid-cols-2">
-            <div className="bg-ivory-deep p-7 sm:p-10">
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">Sem Clara no telefone</p>
+            <div className="bg-background p-7 sm:p-10">
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">Sem voz no telefone</p>
               <ul className="mt-7 space-y-5 text-sm text-ink-soft">
                 {[
-                  "Mensagem enviada e nunca respondida",
-                  "Horário vago que ninguém preenche",
-                  "Reativação que depende de sobrar tempo",
-                  "Cliente antiga que só volta por acaso",
+                  "Ligação perdida na hora de maior movimento",
+                  "Ninguém disponível fora do expediente",
+                  "CRM parado, sem ninguém para trabalhar a base",
+                  "Reativação dependendo de sobrar tempo",
                 ].map((item) => (
                   <li key={item} className="flex gap-3">
                     <span className="text-primary">—</span>
@@ -321,13 +410,13 @@ function Home() {
               </ul>
             </div>
             <div className="bg-primary p-7 text-primary-foreground sm:p-10">
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-gold">Com Clara no telefone</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-gold">Com voz no telefone</p>
               <ul className="mt-7 space-y-5 text-sm">
                 {[
-                  "Ligação para quem não respondeu",
-                  "Horário vago oferecido na hora",
-                  "Reativação rodando sozinha, todo dia",
-                  "Cliente antiga chamada pelo nome",
+                  "Toda ligação atendida, inclusive à noite",
+                  "Base trabalhada sozinha, todo dia",
+                  "Desfecho de cada contato registrado",
+                  "Equipe livre para atender quem está na frente",
                 ].map((item) => (
                   <li key={item} className="flex gap-3">
                     <Check className="size-4 shrink-0 text-gold" />
@@ -342,61 +431,58 @@ function Home() {
 
       <CaseStudyKihon />
 
-      <section className="bg-ivory-deep px-5 py-24 text-foreground sm:px-8 lg:px-14 lg:py-32">
+      <section className="px-5 py-24 sm:px-8 lg:px-14 lg:py-32">
         <div className="mx-auto grid max-w-[1200px] gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">O que a Clara não faz</p>
             <h2 className="mt-6 font-display text-5xl leading-[1.02] sm:text-6xl">
               Não é telemarketing.<br /><em className="text-primary">E não vira um.</em>
             </h2>
-            <p className="mt-7 max-w-md leading-7 text-ink-soft">
+            <p className="mt-7 max-w-md leading-7 text-muted-foreground">
               Ligar para cliente é coisa séria. Os limites abaixo não são promessa de marketing: são como o sistema
               foi construído para funcionar.
             </p>
           </div>
-          <ul className="space-y-5 lg:pt-14">
-            {limits.map((item) => (
-              <li key={item} className="flex gap-4 border-b border-border pb-5 text-sm leading-7 last:border-b-0">
-                <ShieldCheck className="mt-0.5 size-4 shrink-0 text-primary" />
-                <span className="text-ink-soft">{item}</span>
-              </li>
-            ))}
-          </ul>
+          <div className="lg:pt-14">
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">Quando ela liga</p>
+            <ul className="mt-5 space-y-4">
+              {limitsLiga.map((item) => (
+                <li key={item} className="flex gap-4 border-b border-border pb-4 text-sm leading-7 last:border-b-0">
+                  <ShieldCheck className="mt-0.5 size-4 shrink-0 text-primary" />
+                  <span className="text-ink-soft">{item}</span>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-10 text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">Quando ela atende</p>
+            <ul className="mt-5 space-y-4">
+              {limitsAtende.map((item) => (
+                <li key={item} className="flex gap-4 border-b border-border pb-4 text-sm leading-7 last:border-b-0">
+                  <ShieldCheck className="mt-0.5 size-4 shrink-0 text-primary" />
+                  <span className="text-ink-soft">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </section>
 
-      <section id="preco" className="px-5 py-24 sm:px-8 lg:px-14 lg:py-32">
-        <div className="mx-auto max-w-[1000px]">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">Como entra no seu plano</p>
+      <section id="comecar" className="bg-secondary px-5 py-24 text-foreground sm:px-8 lg:px-14 lg:py-32">
+        <div className="mx-auto max-w-[1100px]">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">Como começar</p>
           <h2 className="mt-6 max-w-3xl font-display text-5xl leading-[1.02] sm:text-6xl">
-            A Clara que responde.<br /><em className="text-primary">Mais a Clara que liga.</em>
+            Conecte o telefone.<br /><em className="text-primary">Suba a sua lista.</em>
           </h2>
-          <div className="mt-12 border border-border">
-            <div className="flex flex-wrap items-baseline justify-between gap-4 border-b border-border p-7 sm:p-9">
-              <div>
-                <p className="font-medium">CLARAIA — Agente de IA no WhatsApp</p>
-                <p className="mt-2 text-sm text-muted-foreground">
-                  Atende, agenda, confirma e reativa no WhatsApp, 24 horas por dia.
-                </p>
+          <div className="mt-14 grid gap-10 md:grid-cols-3">
+            {steps.map((step) => (
+              <div key={step.number} className="editorial-rule pt-8">
+                <span className="font-display text-3xl text-gold">{step.number}</span>
+                <h3 className="mt-6 text-xl font-medium leading-snug">{step.title}</h3>
+                <p className="mt-3 text-sm leading-7 text-ink-soft">{step.text}</p>
               </div>
-              <p className="font-display text-4xl">R$ 147<span className="text-base text-muted-foreground">/mês</span></p>
-            </div>
-            <div className="flex flex-wrap items-baseline justify-between gap-4 bg-primary p-7 text-primary-foreground sm:p-9">
-              <div>
-                <p className="font-medium">+ CLARAIA Voz</p>
-                <p className="mt-2 text-sm text-primary-foreground/70">
-                  A Clara liga para quem não respondeu, no mesmo plano e na mesma agenda.
-                </p>
-              </div>
-              <p className="font-display text-4xl">R$ 97<span className="text-base text-primary-foreground/70">/mês</span></p>
-            </div>
+            ))}
           </div>
-          <p className="mt-7 text-sm leading-7 text-muted-foreground">
-            As ligações são cobradas em créditos do seu plano, por chamada conectada — como as conversas de WhatsApp
-            já são hoje. Você acompanha o consumo no painel, ligação por ligação.
-          </p>
-          <div className="mt-9">
-            <WhatsAppButton label="Adicionar Voz ao meu plano" />
+          <div className="mt-14">
+            <WhatsAppButton label="Quero testar no meu negócio" />
           </div>
         </div>
       </section>
@@ -405,10 +491,10 @@ function Home() {
         <div className="mx-auto flex max-w-[1200px] flex-col items-start justify-between gap-9 lg:flex-row lg:items-end">
           <div>
             <p className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.18em] text-gold">
-              <Phone className="size-4" /> A próxima ligação é para uma cliente sua
+              <Phone className="size-4" /> A próxima ligação pode ser sua
             </p>
             <h2 className="mt-5 max-w-3xl font-display text-5xl leading-none sm:text-6xl">
-              Quer ouvir a Clara ligando?
+              Quer ouvir a Clara no telefone?
             </h2>
           </div>
           <WhatsAppButton outline label="Falar no WhatsApp" />
@@ -420,7 +506,7 @@ function Home() {
           <div>
             <Brand />
             <p className="mt-3 text-xs text-primary-foreground/50">
-              Recepção inteligente para salões extraordinários · Voz e WhatsApp
+              Atendimento e discagem por IA para o telefone do seu negócio
             </p>
             <p className="mt-2 text-xs text-primary-foreground/50">
               <a href="https://claraia.com" className="inline-flex items-center gap-1 underline decoration-primary-foreground/30 underline-offset-4 transition-opacity hover:opacity-70">
