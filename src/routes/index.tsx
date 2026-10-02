@@ -301,6 +301,14 @@ function Home() {
                   <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
                     Trecho gerado pelo próprio agente — ouça, baixe e mande para a sua equipe.
                   </p>
+                  <a
+                    href="/ligacao-exemplo.mp3"
+                    download
+                    className="mt-3 inline-flex items-center gap-1.5 text-xs font-medium text-primary underline underline-offset-4"
+                  >
+                    <ArrowDown className="size-3.5" />
+                    Baixar o áudio
+                  </a>
                 </div>
               </div>
 
