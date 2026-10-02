@@ -290,6 +290,18 @@ function Home() {
                 <div className="mt-5 border-t border-border pt-4 text-[0.65rem] uppercase tracking-[0.14em] text-muted-foreground">
                   desfecho gravado na lista · agendou
                 </div>
+
+                <div className="mt-5 border border-border bg-muted/40 p-4">
+                  <p className="text-[0.65rem] uppercase tracking-[0.16em] text-muted-foreground">
+                    Ouça a Clara ligando
+                  </p>
+                  <audio controls preload="none" src="/ligacao-exemplo.mp3" className="mt-3 w-full">
+                    Seu navegador não reproduz áudio.
+                  </audio>
+                  <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
+                    Trecho gerado pelo próprio agente — ouça, baixe e mande para a sua equipe.
+                  </p>
+                </div>
               </div>
 
               <div className="mt-10 space-y-6">
