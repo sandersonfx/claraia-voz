@@ -35,7 +35,7 @@ export function CaseStudyKihon() {
         {/* Header */}
         <div className="mb-20 text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary mb-5">
-            Kihon Hair — Sapiranga, RS
+            Kihon Hair — São Paulo, SP
           </p>
           <h2 className="mx-auto max-w-3xl font-display text-5xl leading-none sm:text-6xl lg:text-6xl mb-6">
             De salão esquecido<br />
